@@ -1,0 +1,37 @@
+.notifier-msg {
+    font-size: 16px;
+    color: #FFF;
+    font-family: 'Gilda Display', serif;
+    position: fixed;
+    top: 0;
+    left: 48%;
+    z-index: 1000;
+    background-color: #22B1B1;
+    padding: 10px;
+    border-bottom-right-radius: 4px;
+    -webkit-user-select: none;
+    background-color: #045FB4;
+    border-color: #045FB4;
+    background-image: linear-gradient(#6ADD78, #62E756 6%, #09B40F);
+    border-bottom-left-radius: 4px;
+    cursor: pointer;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+}
+
+.notifier-msg.ng-hide-add, .notifier-msg.ng-hide-remove {
+    -webkit-transition:all linear 0.5s;
+    -moz-transition:all linear 0.5s;
+    -o-transition:all linear 0.5s;
+    transition:all linear 0.5s;
+    display:block!important;
+}
+ 
+.notifier-msg.ng-hide-add.ng-hide-add-active,
+.notifier-msg.ng-hide-remove {
+    opacity:0;
+}
+ 
+.notifier-msg.ng-hide-add,
+.notifier-msg.ng-hide-remove.ng-hide-remove-active {
+    opacity:1;
+}
