@@ -13,9 +13,7 @@ module.exports = function(config) {
         files: [
             'src/vendor/angular/angular.min.js',
             'src/vendor/angular-mocks/angular-mocks.js',
-            'src/angular-notifier.js',
-            'src/angular-notifier.factory.js',
-            'src/angular-notifier.directive.js',
+            'src/*.js',
             'test/spec/*.spec.js'
         ],
 

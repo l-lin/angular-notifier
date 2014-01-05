@@ -53,14 +53,14 @@ module.exports = function(grunt) {
             },
             all: [
                 'Gruntfile.js',
-                '<%= yeoman.src %>/app/{,*/}*.js'
+                '<%= yeoman.src %>/{,*/}*.js'
             ]
         },
         /** ------------- SOURCE CODES MINIMIZATION ------------- */
         ngtemplates: {
             main: {
                 options: {
-                    module: 'notifier',
+                    module: 'llNotifier',
                     base: '<%= yeoman.src %>'
                 },
                 src: '<%= yeoman.src %>/angular-notifier.html',
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
                 },
                 src: ['<%= yeoman.src %>/angular-notifier.js',
                     '<%= yeoman.src %>/angular-notifier.factory.js',
-                    '<%= yeoman.src %>/angular-notifier.directive.js',
+                    '<%= yeoman.src %>/angular-notifier.service.js',
                     '<%= yeoman.build %>/angular-notifier.template.js'
                 ],
                 dest: '<%= yeoman.build %>/angular-notifier.js'
@@ -162,8 +162,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', [
         'format',
-        'jshint',
-        'test',
+        // 'jshint',
+        // 'test',
         'build'
     ]);
 };

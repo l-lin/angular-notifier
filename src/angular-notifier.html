@@ -1,1 +1,3 @@
-<span class="notifier-msg" ng-cloak ng-click="closeMsg()">Saved!</span>
+<span class="notifier-msg" ng-cloak ng-click="closeMsg()" ng-show="isShown">
+	{{ message }}
+</span>

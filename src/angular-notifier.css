@@ -1,23 +1,66 @@
+/* GRAPHICAL ASPECT */
 .notifier-msg {
     font-size: 16px;
-    color: #FFF;
     font-family: 'Gilda Display', serif;
     position: fixed;
-    top: 0;
-    left: 48%;
     z-index: 1000;
-    background-color: #22B1B1;
     padding: 10px;
-    border-bottom-right-radius: 4px;
     -webkit-user-select: none;
-    background-color: #045FB4;
-    border-color: #045FB4;
-    background-image: linear-gradient(#6ADD78, #62E756 6%, #09B40F);
-    border-bottom-left-radius: 4px;
     cursor: pointer;
     box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
 }
 
+.notifier-msg.top {
+    top: 0;
+}
+
+.notifier-msg.right {
+    right: 0;
+}
+
+.notifier-msg.bottom {
+    bottom: 0;
+}
+
+.notifier-msg.left {
+    left: 0;
+}
+
+.notifier-msg.center {
+    left: 50%;
+}
+
+.notifier-msg.default {
+    color: #FFF;
+    background-color: #5E635E;
+    background-image: linear-gradient(#DADADA, #5E635E 6%, #151815);
+}
+
+.notifier-msg.success {
+    color: #FFF;
+    background-color: #62E756;
+    background-image: linear-gradient(#6ADD78, #62E756 6%, #09B40F);
+}
+
+.notifier-msg.warning {
+    color: #86652C;
+    background-color: #E9B30A;
+    background-image: linear-gradient(#FDF4C4, #F3E181 6%, #E9B30A);
+}
+
+.notifier-msg.info {
+    color: #FFF;
+    background-color: #5C56E7;
+    background-image: linear-gradient(#6A7CDD, #5662E7 6%, #091EB4);
+}
+
+.notifier-msg.error {
+    color: #FFF;
+    background-color: #E75656;
+    background-image: linear-gradient(#DD6A6A, #E75656 6%, #B40909);
+}
+/* TRANSITION */
 .notifier-msg.ng-hide-add, .notifier-msg.ng-hide-remove {
     -webkit-transition:all linear 0.5s;
     -moz-transition:all linear 0.5s;
