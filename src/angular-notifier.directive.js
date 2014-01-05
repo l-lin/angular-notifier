@@ -11,8 +11,8 @@
 			// cont­rol­ler: function($scope, $element, $attrs, $transclue) {},
 			// require: 'ngModel', // Array = multiple requires, ? = optional, ^ = check parent elements
 			restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
-			template: '<span class="notifier-msg" ng-cloak ng-click="closeMsg()">Saved!</span>',
-			// templateUrl: '',
+			// template: '',
+			templateUrl: 'src/angular-notifier.html',
 			// replace: true,
 			// transclude: true,
 			// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),

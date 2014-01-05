@@ -57,6 +57,16 @@ module.exports = function(grunt) {
             ]
         },
         /** ------------- SOURCE CODES MINIMIZATION ------------- */
+        ngtemplates: {
+            main: {
+                options: {
+                    module: 'notifier',
+                    base: '<%= yeoman.src %>'
+                },
+                src: '<%= yeoman.src %>/angular-notifier.html',
+                dest: '<%= yeoman.build %>/angular-notifier.template.js'
+            }
+        },
         concat: {
             options: {
                 stripBanners: true,
@@ -68,7 +78,8 @@ module.exports = function(grunt) {
                 },
                 src: ['<%= yeoman.src %>/angular-notifier.js',
                     '<%= yeoman.src %>/angular-notifier.factory.js',
-                    '<%= yeoman.src %>/angular-notifier.directive.js'
+                    '<%= yeoman.src %>/angular-notifier.directive.js',
+                    '<%= yeoman.build %>/angular-notifier.template.js'
                 ],
                 dest: '<%= yeoman.build %>/angular-notifier.js'
             },
@@ -140,6 +151,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'ngtemplates',
         'concat:build',
         'ngmin',
         'cssmin',
