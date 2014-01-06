@@ -1,0 +1,222 @@
+/* ---------------------------------------- */
+/* COMMON */
+/* ---------------------------------------- */
+
+* {
+    margin: 0;
+}
+
+body {
+    padding-top: 20px;
+}
+
+h1 {
+    color: #045FB4;
+    font-family: 'Gilda Display', serif;
+}
+
+a, a:visited {
+    color: #045FB4;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #b4052c;
+}
+
+hr {
+    border-bottom: 1px solid #eee;
+    border-top: 0;
+    margin: 10px 0;
+}
+
+input[type="text"] {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    line-height: 20px;
+    color: #555555;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    height: 20px;
+    padding: 4px 6px;
+}
+
+/* ---------------------------------------- */
+/* HEADER */
+/* ---------------------------------------- */
+
+header {
+    text-align: center;
+}
+
+/* ---------------------------------------- */
+/* FOOTER */
+/* ---------------------------------------- */
+
+footer {
+    margin: 30px auto 30px auto;
+    width: 900px;
+    border-top: 1px solid #CACACA;
+    padding-top: 15px;
+    text-align: center;
+}
+
+/* ---------------------------------------- */
+/* CODE */
+/* ---------------------------------------- */
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #254CC7;
+    white-space: nowrap;
+    background-color: #F2F7F9;
+    border-radius: 4px;
+}
+
+code, kbd, pre, samp {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+}
+
+pre {
+    display: block;
+    padding: 10px;
+    margin: 0 0 10.5px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #7b8a8b;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #ecf0f1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+pre code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+aside {
+    float: left;
+    width: 55%;
+}
+
+/* ---------------------------------------- */
+/* MAIN CONTENT */
+/* ---------------------------------------- */
+
+article {
+    background-color: #FFF;
+    padding: 30px 30px 0 30px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333;
+}
+
+article h1 {
+    border-bottom: 1px solid #CACACA;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+    font-size: xx-large;
+}
+
+article h3 {
+    font-size: x-large;
+    margin-bottom: 10px;
+}
+
+section:before, section:after {
+    display: table;
+    content: " ";
+}
+
+section:after {
+    clear:both;
+}
+
+.container {
+    margin: 0 auto;
+    width: 900px;
+    font: 13px Helvetica, arial, freesans, clean, sans-serif;
+}
+
+.demo {
+    float: left;
+    width: 40%;
+    margin-left: 30px;
+}
+
+.demo p {
+    margin: 5px;
+}
+
+.demo label {
+    width: 125px;
+    float: left;
+    font-weight: bold;
+}
+
+/* ---------------------------------------- */
+/* BUTTONS */
+/* ---------------------------------------- */
+
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    margin-bottom: 0;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-user-select: none;
+}
+
+.btn.btn-default {
+    color: #FFF;
+    background-color: #5E635E;
+    background-image: linear-gradient(#868585, #5E635E 6%, #151815);
+    border-color: #141414;
+}
+
+.btn.btn-success {
+    color: #FFF;
+    background-color: #62E756;
+    background-image: linear-gradient(#6ADD78, #62E756 6%, #09B40F);
+    border-color: #1AB90C;
+}
+
+.btn.btn-warning {
+    color: #86652C;
+    background-color: #E9B30A;
+    background-image: linear-gradient(#FDF4C4, #F3E181 6%, #E9B30A);
+    border-color: #D6A200;
+}
+
+.btn.btn-info {
+    color: #FFF;
+    background-color: #045FB4;
+    border-color: #045FB4;
+    background-image: linear-gradient(#64B4FF, #0084FF 6%, #1265B3);
+}
+
+.btn.btn-error {
+    color: #FFF;
+    background-color: #B40404;
+    border-color: #B40404;
+    background-image: linear-gradient(#FF6464, #FF0000 6%, #B60E0E);
+}
