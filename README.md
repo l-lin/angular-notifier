@@ -1,4 +1,4 @@
-Angular Notifier [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+Angular Notifier [![Build Status](https://travis-ci.org/l-lin/angular-notifier.png?branch=master)](https://travis-ci.org/l-lin/angular-notifier) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 ================
 > AngularJS simple notifications service
 
