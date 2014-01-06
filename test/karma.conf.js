@@ -12,8 +12,11 @@ module.exports = function(config) {
         // list of files / patterns to load in the browser
         files: [
             'src/vendor/angular/angular.min.js',
+            'src/vendor/angular-animate/angular-animate.min.js',
             'src/vendor/angular-mocks/angular-mocks.js',
-            'src/*.js',
+            'src/angular-notifier.js',
+            'src/angular-notifier.factory.js',
+            'src/angular-notifier.service.js',
             'test/spec/*.spec.js'
         ],
 

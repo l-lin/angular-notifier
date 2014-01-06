@@ -6,13 +6,15 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>angular-notifier</title>
+	<title>Angular Notifier</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
 	
+	<link href='http://fonts.googleapis.com/css?family=Gilda+Display' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="styles/main.css">
-	<link rel="stylesheet" type="text/css" href="../dist/angular-notifier.css">
+	<link rel="stylesheet" href="styles/vim.syntax.css">
+	<link rel="stylesheet" href="../dist/angular-notifier.css">
 </head>
 <body ng-app="notifierDemoApp">
 	<!--[if lt IE 7]>
@@ -23,16 +25,176 @@
 	<script src="vendor/es5-shim/es5-shim.min.js"></script>
 	<script src="vendor/json3/json3.min.js"></script>
 	<![endif]-->
+
+	<header>
+		<h1><a href="https://github.com/l-lin/angular-notifier">Angular Notifier</a></h1>
+        <p>
+            Simple notifications using <a href="http://angularjs.org/">AngularJS</a> and <a href="http://docs.angularjs.org/api/ngAnimate">AngularAnimate</a>.
+        </p>
+        <a href="https://github.com/l-lin/angular-notifier">
+        	<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+        </a>
+        <hr />
+	</header>
 	
 	<div class="container" ng-controller="demoCtrl">
-		<button ng-click="notify()">NOTIFY</button>
-		<button ng-click="success()">SUCCESS</button>
-		<button ng-click="warning()">WARNING</button>
-		<button ng-click="info()">INFO</button>
-		<button ng-click="error()">ERROR</button>
+		<article>
+			<h1>Getting started</h1>
+			<section>
+				<h3>Dependencies</h3>
+				<p>
+					The <strong>only required dependencies</strong> are:
+					<ul>
+						<li><a href="http://angularjs.org/">AngularJS</a> (tested with version 1.2.7)</li>
+						<li><a href="http://docs.angularjs.org/api/ngAnimate">AngularAnimate</a> (tested with version 1.2.7)</li>
+					</ul>
+				</p>
+				<p>
+					No dependencies on jQuery!
+				</p>
+			</section>
+			<section>
+				<h3>Download</h3>
+				<p>
+					The files can be download from:
+					<ul>
+						<li>
+							Minified <a href="https://github.com/l-lin/angular-notifier/dist/angular-notifier.min.js">JS</a> and <a href="https://github.com/l-lin/angular-notifier/dist/angular-notifier.min.css">CSS</a> for production usage
+						</li>
+						<li>
+							Un-minified <a href="https://github.com/l-lin/angular-notifier/dist/angular-notifier.js">JS </a> and <a href="https://github.com/l-lin/angular-notifier/dist/angular-notifier.css">CSS</a> for development
+						</li>
+					</ul>
+				</p>
+			</section>
+			<section>
+				<h3>Installation</h3>
+				<p>
+					Include the JS and CSS file in your <code>index.html</code> file:
+					<br />
+					<div class="highlight">
+<pre><code class="html"><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"angular-notifier.min.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"angular-notifier.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span></code></pre></div>
+				</p>
+				<p>
+					Declare dependencies on your module app like this:
+					<div class="highlight">
+<pre><code class="javascript"><span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'myModule'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'llNotifier'</span><span class="p">]);</span>
+</code></pre>
+					</div>
+				</p>
+			</section>
+		</article>
+		<article>
+			<h1>Usage</h1>
+			<section>
+				<h3>Simple usage</h3>
+				<p>
+					Inject the <code>notifier service</code> and notify by supplying with a <code>String</code> as a parameter like this:
+				</p>
+				<br />
+				<aside>
+					<div class="highlight">
+<pre><code class="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'demoCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">notifier</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">demoText</span> <span class="o">=</span> <span class="s1">'foobar'</span><span class="p">;</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">notify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">notifier</span><span class="p">.</span><span class="nx">notify</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">demoText</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">success</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">notifier</span><span class="p">.</span><span class="nx">success</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">demoText</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">warning</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">notifier</span><span class="p">.</span><span class="nx">warning</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">demoText</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">info</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">notifier</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">demoText</span><span class="p">);</span>
+    <span class="p">};</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">error</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">notifier</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">demoText</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">});</span>
+</code></pre>
+					</div>
+				</aside>
+				<div class="demo">
+					<p>
+						<input type="text" name="demoText" ng-model="demoText" placeholder="Message" />
+					</p>
+					<br />
+					<button class="btn btn-default" ng-click="notify()">NOTIFY</button>
+					<br /><br />
+					<button class="btn btn-success" ng-click="success()">SUCCESS</button>
+					<br /><br />
+					<button class="btn btn-warning" ng-click="warning()">WARNING</button>
+					<br /><br />
+					<button class="btn btn-info" ng-click="info()">INFO</button>
+					<br /><br />
+					<button class="btn btn-error" ng-click="error()">ERROR</button>
+					<br />
+				</div>
+			</section>
+			<section>
+				<h3>Custom notifications</h3>
+				<p>
+					Inject the <code>notifier service</code> and notify by supplying with a <code>config Object</code> as a parameter like this:
+				</p>
+				<br />
+				<aside>
+					<div class="highlight">
+<pre><code class="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'demoCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">notifier</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">demoNotification</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">message</span><span class="o">:</span> <span class="s1">'{{demoNotification.message}}'</span><span class="p">,</span>
+        <span class="nx">hasTimeout</span><span class="o">:</span> <span class="kc">{{demoNotification.hasTimeout}}</span><span class="p">,</span>
+        <span class="nx">timeout</span><span class="o">:</span> <span class="mi">{{demoNotification.timeout}}</span><span class="p">,</span>
+        <span class="nx">type</span><span class="o">:</span> <span class="s1">'{{demoNotification.type}}'</span><span class="p">,</span>
+        <span class="nx">position</span><span class="o">:</span> <span class="s1">'{{demoNotification.position}}'</span>
+    <span class="p">};</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">customNotify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">notifier</span><span class="p">.</span><span class="nx">notify</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">demoNotification</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">});</span>
+</code></pre>
+					</div>
+				</aside>
+				<div class="demo">
+					<p>
+						<label for="message">Message: </label>
+						<input name="message" id="message" type="text" ng-model="demoNotification.message" placeholder="Message" />
+					</p>
+					<p>
+						<label for="hasTimeout">Add timer</label>
+						<input name="hasTimeout" id="hasTimeout" type="checkbox" ng-model="demoNotification.hasTimeout" />
+					</p>
+					<p ng-show="demoNotification.hasTimeout">
+						<label for="timeout">&nbsp;</label>
+						<input name="timeout" id="timeout" type="text" ng-model="demoNotification.timeout" placeholder="timer" /> ms
+					</p>
+					<p>
+						<label for="type">Notification type: </label>
+						<select name="type" id="type" ng-model="demoNotification.type">
+							<option value="default">Default</option>
+							<option value="success">Success</option>
+							<option value="warning">Warning</option>
+							<option value="info">Info</option>
+							<option value="error">Error</option>
+						</select>
+					</p>
+					<p>
+						<label for="position">Position: </label>
+						<input name="position" id="position" type="text" ng-model="demoNotification.position" placeholder="Position" />
+						<div class="note">
+							Available positions:<br /><code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code>, <code>center</code>
+						</div>
+					</p>
+					<button class="btn btn-default" ng-click="customNotify()">Notify</button>
+				</div>
+			</section>
+		</article>
 	</div>
 
-	<notifier></notifier>
+	<footer>
+		Designed and built by <a href="https://github.com/l-lin">Louis LIN</a>
+	</footer>
 
 	<script src="vendor/angular/angular.min.js"></script>
 	<script src="vendor/angular-animate/angular-animate.min.js"></script>

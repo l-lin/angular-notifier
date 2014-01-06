@@ -3,20 +3,32 @@
 	var app = angular.module('notifierDemoApp', ['llNotifier']);
 
 	app.controller('demoCtrl', function($scope, notifier) {
+		$scope.demoText = 'foobar';
 		$scope.notify = function() {
-			notifier.notify('notify');
+			notifier.notify($scope.demoText);
 		};
 		$scope.success = function() {
-			notifier.success('success');
+			notifier.success($scope.demoText);
 		};
 		$scope.warning = function() {
-			notifier.warning('warning');
+			notifier.warning($scope.demoText);
 		};
 		$scope.info = function() {
-			notifier.info('info');
+			notifier.info($scope.demoText);
 		};
 		$scope.error = function() {
-			notifier.error('error');
+			notifier.error($scope.demoText);
+		};
+
+		$scope.demoNotification = {
+			message: 'Custom notification',
+			hasTimeout: true,
+			timeout: 3000,
+			type: 'info',
+			position: 'top center'
+		};
+		$scope.customNotify = function() {
+			notifier.notify($scope.demoNotification);
 		};
 	});
 })();

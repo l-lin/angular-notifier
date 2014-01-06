@@ -4,31 +4,55 @@
 	service('notifier', function(notifierFactory) {
 		/**
 		 * Notify the given argument
+		 * @param {JSONObject|String} args the argument to notify
+		 * @param {String} notificationType the notification type
+		 */
+		var doNotify = function doNotify(args, notificationType) {
+			var notification = notifierFactory.newNotification(args);
+			if(angular.isDefined(notificationType)) {
+				notification.type = notificationType;
+			}
+			notification.render();
+		};
+
+		/**
+		 * Notify the given argument
 		 * @param  {JSONObject|String} args the argument to notify
 		 */
 		this.notify = function notify(args) {
-			var notification = notifierFactory.newNotification(args);
-			notification.render();
+			doNotify(args);
 		};
+
+		/**
+		 * Notify with a success type message
+		 * @param  {JSONObject|String} args the argument to notify
+		 */
 		this.success = function success(args) {
-			var notification = notifierFactory.newNotification(args);
-			notification.type = 'success';
-			notification.render();
+			doNotify(args, 'success');
 		};
+
+		/**
+		 * Notify with a warning type message
+		 * @param  {JSONObject|String} args the argument to notify
+		 */
 		this.warning = function warning(args) {
-			var notification = notifierFactory.newNotification(args);
-			notification.type = 'warning';
-			notification.render();
+			doNotify(args, 'warning');
 		};
+
+		/**
+		 * Notify with an info type message
+		 * @param  {JSONObject|String} args the argument to notify
+		 */
 		this.info = function info(args) {
-			var notification = notifierFactory.newNotification(args);
-			notification.type = 'info';
-			notification.render();
+			doNotify(args, 'info');
 		};
+
+		/**
+		 * Notify with an error type message
+		 * @param  {JSONObject|String} args the argument to notify
+		 */
 		this.error = function error(args) {
-			var notification = notifierFactory.newNotification(args);
-			notification.type = 'error';
-			notification.render();
+			doNotify(args, 'error');
 		};
 	});
 })();

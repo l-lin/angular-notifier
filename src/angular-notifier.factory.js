@@ -80,7 +80,10 @@
 				// Set the notification position
 				notification.position = notification.position ? notification.position : llConstants.DEFAULT_NOTIFICATION_POSITION;
 				// Set the timeout
-				if (angular.isUndefined(args.timeout) || !angular.isNumber(args.timeout)) {
+				if (angular.isUndefined(args.hasTimeout)) {
+					notification.hasTimeout = true;
+				}
+				if (angular.isUndefined(args.timeout)) {
 					notification.timeout = llConstants.DEFAULT_TIMEOUT;
 				}
 				// Define the render function
