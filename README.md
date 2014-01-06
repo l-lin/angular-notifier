@@ -17,9 +17,15 @@ No dependencies on jQuery!
 
 Download
 ----------------
-The files can be download from:
+### Manually
+The files can be downloaded from:
 * Minified [JS](https://github.com/l-lin/angular-notifier/dist/angular-notifier.min.js) and [CSS](https://github.com/l-lin/angular-notifier/dist/angular-notifier.min.css) for production usage
 * Un-minified [JS](https://github.com/l-lin/angular-notifier/dist/angular-notifier.js) and [CSS](https://github.com/l-lin/angular-notifier/dist/angular-notifier.css) for development
+
+### With BowerJS
+```
+$ bower install angular-notifier
+```
 
 Installation
 ----------------
