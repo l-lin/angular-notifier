@@ -12,6 +12,7 @@
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
 	
 	<link href='http://fonts.googleapis.com/css?family=Gilda+Display' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="styles/font-awesome.min.css">
 	<link rel="stylesheet" href="styles/main.css">
 	<link rel="stylesheet" href="styles/monokai.syntax.css">
 	<link rel="stylesheet" href="vendor/angular-notifier/angular-notifier.min.css">
@@ -168,7 +169,7 @@
 						<input name="message" id="message" type="text" ng-model="demoNotification.message" placeholder="Message" />
 					</p>
 					<p>
-						<label for="hasTimeout">Add timer</label>
+						<label for="hasTimeout">Add timer: </label>
 						<input name="hasTimeout" id="hasTimeout" type="checkbox" ng-model="demoNotification.hasTimeout" />
 					</p>
 					<p ng-show="demoNotification.hasTimeout">
@@ -199,7 +200,7 @@
 	</div>
 
 	<footer>
-		Designed and built by <a href="https://github.com/l-lin">Louis LIN</a>
+		Designed and built with <i class="fa fa-heart"></i> by <a href="https://github.com/l-lin">Louis LIN</a>
 	</footer>
 
 	<script src="vendor/angular/angular.min.js"></script>
