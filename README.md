@@ -2,6 +2,8 @@ Angular Notifier [![Build Status](https://travis-ci.org/l-lin/angular-notifier.p
 ================
 > AngularJS simple notifications service
 
+Work still in progress!
+
 Live demo
 ================
 See [demo](http://l-lin.github.io/angular-notifier/)
