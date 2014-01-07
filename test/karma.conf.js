@@ -17,6 +17,7 @@ module.exports = function(config) {
             'src/angular-notifier.js',
             'src/angular-notifier.factory.js',
             'src/angular-notifier.service.js',
+            'src/angular-notifier.directive.js',
             'test/spec/*.spec.js'
         ],
 

@@ -12,9 +12,10 @@
 	<link rel="icon" type="image/x-icon" href="favicon.ico">
 	
 	<link href='http://fonts.googleapis.com/css?family=Gilda+Display' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="styles/font-awesome.min.css">
 	<link rel="stylesheet" href="styles/main.css">
-	<link rel="stylesheet" href="styles/vim.syntax.css">
-	<link rel="stylesheet" href="../dist/angular-notifier.css">
+	<link rel="stylesheet" href="styles/monokai.syntax.css">
+	<link rel="stylesheet" href="../src/angular-notifier.css">
 </head>
 <body ng-app="notifierDemoApp">
 	<!--[if lt IE 7]>
@@ -55,8 +56,9 @@
 			</section>
 			<section>
 				<h3>Download</h3>
+				<h4>Manually</h4>
 				<p>
-					The files can be download from:
+					The files can be downloaded from:
 					<ul>
 						<li>
 							Minified <a href="https://github.com/l-lin/angular-notifier/dist/angular-notifier.min.js">JS</a> and <a href="https://github.com/l-lin/angular-notifier/dist/angular-notifier.min.css">CSS</a> for production usage
@@ -66,6 +68,11 @@
 						</li>
 					</ul>
 				</p>
+				<h4>With <a href="http://bower.io">Bower</a></h4>
+				<div class="highlight">
+<pre><code class="bash"><span class="nv">$ </span>bower install angular-notifier
+</code></pre>
+				</div>
 			</section>
 			<section>
 				<h3>Installation</h3>
@@ -100,18 +107,6 @@
     <span class="nx">$scope</span><span class="p">.</span><span class="nx">notify</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">notifier</span><span class="p">.</span><span class="nx">notify</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">demoText</span><span class="p">);</span>
     <span class="p">};</span>
-    <span class="nx">$scope</span><span class="p">.</span><span class="nx">success</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">notifier</span><span class="p">.</span><span class="nx">success</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">demoText</span><span class="p">);</span>
-    <span class="p">};</span>
-    <span class="nx">$scope</span><span class="p">.</span><span class="nx">warning</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">notifier</span><span class="p">.</span><span class="nx">warning</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">demoText</span><span class="p">);</span>
-    <span class="p">};</span>
-    <span class="nx">$scope</span><span class="p">.</span><span class="nx">info</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">notifier</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">demoText</span><span class="p">);</span>
-    <span class="p">};</span>
-    <span class="nx">$scope</span><span class="p">.</span><span class="nx">error</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-        <span class="nx">notifier</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">demoText</span><span class="p">);</span>
-    <span class="p">};</span>
 <span class="p">});</span>
 </code></pre>
 					</div>
@@ -121,15 +116,7 @@
 						<input type="text" name="demoText" ng-model="demoText" placeholder="Message" />
 					</p>
 					<br />
-					<button class="btn btn-default" ng-click="notify()">NOTIFY</button>
-					<br /><br />
-					<button class="btn btn-success" ng-click="success()">SUCCESS</button>
-					<br /><br />
-					<button class="btn btn-warning" ng-click="warning()">WARNING</button>
-					<br /><br />
-					<button class="btn btn-info" ng-click="info()">INFO</button>
-					<br /><br />
-					<button class="btn btn-error" ng-click="error()">ERROR</button>
+					<button class="btn btn-info" ng-click="notify()">Notify</button>
 					<br />
 				</div>
 			</section>
@@ -143,7 +130,7 @@
 					<div class="highlight">
 <pre><code class="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'demoCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">notifier</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">$scope</span><span class="p">.</span><span class="nx">demoNotification</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="nx">message</span><span class="o">:</span> <span class="s1">'{{demoNotification.message}}'</span><span class="p">,</span>
+        <span class="nx">template</span><span class="o">:</span> <span class="s1">'{{demoNotification.template}}'</span><span class="p">,</span>
         <span class="nx">hasTimeout</span><span class="o">:</span> <span class="kc">{{demoNotification.hasTimeout}}</span><span class="p">,</span>
         <span class="nx">timeout</span><span class="o">:</span> <span class="mi">{{demoNotification.timeout}}</span><span class="p">,</span>
         <span class="nx">type</span><span class="o">:</span> <span class="s1">'{{demoNotification.type}}'</span><span class="p">,</span>
@@ -158,11 +145,11 @@
 				</aside>
 				<div class="demo">
 					<p>
-						<label for="message">Message: </label>
-						<input name="message" id="message" type="text" ng-model="demoNotification.message" placeholder="Message" />
+						<label for="template">Template: </label>
+						<input name="template" id="template" type="text" ng-model="demoNotification.template" placeholder="Template" />
 					</p>
 					<p>
-						<label for="hasTimeout">Add timer</label>
+						<label for="hasTimeout">Add timer: </label>
 						<input name="hasTimeout" id="hasTimeout" type="checkbox" ng-model="demoNotification.hasTimeout" />
 					</p>
 					<p ng-show="demoNotification.hasTimeout">
@@ -186,20 +173,48 @@
 							Available positions:<br /><code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code>, <code>center</code>
 						</div>
 					</p>
-					<button class="btn btn-default" ng-click="customNotify()">Notify</button>
+					<button class="btn btn-info" ng-click="customNotify()">Notify</button>
+				</div>
+			</section>
+			<section>
+				<h3>Defining your own <code>scope</code></h3>
+				<p>
+					You can put your own <code>scope</code> in the <code>config object</code> like this:
+				</p>
+				<br />
+				<aside>
+					<div class="highlight">
+<pre><code class="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'demoCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">notifier</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">notification</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">template</span><span class="o">:</span> <span class="s1">'&lt;h3 ng-click="openNestedNotification()"&gt;Click me!&lt;/h3&gt;'</span><span class="p">,</span>
+        <span class="nx">scope</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">openNestedNotification</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nx">notifier</span><span class="p">.</span><span class="nx">notify</span><span class="p">({</span><span class="nx">template</span><span class="o">:</span> <span class="s1">'I am a nested notification!'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">'success'</span><span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nx">hasTimeout</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">};</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">nestedNotification</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">notifier</span><span class="p">.</span><span class="nx">notify</span><span class="p">(</span><span class="nx">notification</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">});</span>
+</code></pre>
+					</div>
+				</aside>
+				<div class="demo">
+					<button class="btn btn-info" ng-click="nestedNotification()">Notify</button>
 				</div>
 			</section>
 		</article>
 	</div>
 
 	<footer>
-		Designed and built by <a href="https://github.com/l-lin">Louis LIN</a>
+		Designed and built with <i class="fa fa-heart"></i> by <a href="https://github.com/l-lin">Louis LIN</a>
 	</footer>
 
 	<script src="vendor/angular/angular.min.js"></script>
 	<script src="vendor/angular-animate/angular-animate.min.js"></script>
 	<script src="../dist/angular-notifier.js"></script>
-
 	<script src="app/app.js"></script>
 </body>
 </html>

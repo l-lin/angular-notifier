@@ -7,21 +7,9 @@
 		$scope.notify = function() {
 			notifier.notify($scope.demoText);
 		};
-		$scope.success = function() {
-			notifier.success($scope.demoText);
-		};
-		$scope.warning = function() {
-			notifier.warning($scope.demoText);
-		};
-		$scope.info = function() {
-			notifier.info($scope.demoText);
-		};
-		$scope.error = function() {
-			notifier.error($scope.demoText);
-		};
 
 		$scope.demoNotification = {
-			message: 'Custom notification',
+			template: 'Custom notification',
 			hasTimeout: true,
 			timeout: 3000,
 			type: 'info',
@@ -29,6 +17,19 @@
 		};
 		$scope.customNotify = function() {
 			notifier.notify($scope.demoNotification);
+		};
+
+		var notification = {
+			template: '<h3 ng-click="openNestedNotification()">Click me!</h3>',
+			scope: {
+				openNestedNotification: function() {
+					notifier.notify({template: 'I am a nested notification!', type: 'success'});
+				}
+			},
+			hasTimeout: false
+		};
+		$scope.nestedNotification = function() {
+			notifier.notify(notification);
 		};
 	});
 })();

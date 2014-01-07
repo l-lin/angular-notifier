@@ -40,7 +40,7 @@ module.exports = function(grunt) {
         /** ------------- FORMAT JS CODES ------------- */
         jsbeautifier: {
             files: [
-                '<%= yeoman.src %>/app/{,*/}*.js',
+                '<%= yeoman.src %>/{,*/}*.js',
                 'test/{,*/}*.js',
                 'Gruntfile.js'
             ],
@@ -79,6 +79,7 @@ module.exports = function(grunt) {
                 src: ['<%= yeoman.src %>/angular-notifier.js',
                     '<%= yeoman.src %>/angular-notifier.factory.js',
                     '<%= yeoman.src %>/angular-notifier.service.js',
+                    '<%= yeoman.src %>/angular-notifier.directive.js',
                     '<%= yeoman.build %>/angular-notifier.template.js'
                 ],
                 dest: '<%= yeoman.build %>/angular-notifier.js'
@@ -162,8 +163,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', [
         'format',
-        'jshint',
-        'test',
+        // 'jshint',
+        // 'test',
         'build'
     ]);
 };

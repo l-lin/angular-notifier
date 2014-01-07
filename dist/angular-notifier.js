@@ -12,99 +12,95 @@
 }());
 (function () {
   'use strict';
-  angular.module('llNotifier').factory('notifierFactory', [
-    '$timeout',
+  angular.module('llNotifier').factory('NotificationDecorator', function () {
+    function NotificationDecorator(args) {
+      this.params = args;
+    }
+    NotificationDecorator.prototype = {
+      toObject: function () {
+        var obj = this.params;
+        if (typeof obj !== 'object') {
+          obj = { template: obj };
+        }
+        return obj;
+      }
+    };
+    return NotificationDecorator;
+  }).factory('llNotificationScopeFactory', [
     '$rootScope',
-    '$compile',
-    '$http',
-    '$templateCache',
-    'llNotifierTemplateUrl',
-    'llConstants',
-    function ($timeout, $rootScope, $compile, $http, $templateCache, llNotifierTemplateUrl, llConstants) {
-      function fetchTemplateContent(templateUrl) {
-        return $http.get(templateUrl, { cache: $templateCache });
-      }
-      function createScopeAndConfigure(notification) {
-        var scope = $rootScope.$new();
-        scope.message = notification.message;
-        scope.isShown = true;
-        if (typeof notification.scope === 'object') {
-          for (var key in notification.scope) {
-            scope[key] = notification.scope[key];
-          }
-        }
-        scope.closeMsg = function () {
-          scope.isShown = false;
-        };
-        if (notification.hasTimeout) {
-          $timeout(function () {
-            scope.isShown = false;
-          }, notification.timeout);
-        }
-        return scope;
-      }
-      function createTemplateElement(template, scope) {
-        return $compile(template)(scope);
-      }
+    '$timeout',
+    function ($rootScope, $timeout) {
       return {
-        newNotification: function (args) {
-          var notification = args;
-          if (typeof notification !== 'object') {
-            notification = { message: notification };
+        newConfiguredScope: function (notification, notificationScope) {
+          var scope = $rootScope.$new();
+          scope.isShown = true;
+          if (typeof notificationScope === 'object') {
+            for (var key in notificationScope) {
+              scope[key] = notificationScope[key];
+            }
           }
-          notification.templateUrl = notification.templateUrl ? notification.templateUrl : llNotifierTemplateUrl;
-          notification.scope = angular.isUndefined(args.scope) ? {} : args.scope;
-          notification.type = notification.type ? notification.type : llConstants.DEFAULT_NOTIFICATION_TYPE;
-          notification.position = notification.position ? notification.position : llConstants.DEFAULT_NOTIFICATION_POSITION;
-          if (angular.isUndefined(args.hasTimeout)) {
-            notification.hasTimeout = true;
-          }
-          if (angular.isUndefined(args.timeout)) {
-            notification.timeout = llConstants.DEFAULT_TIMEOUT;
-          }
-          notification.render = function () {
-            var _this = this;
-            fetchTemplateContent(_this.templateUrl).success(function (template) {
-              var scope = createScopeAndConfigure(notification), templateElement = createTemplateElement(template, scope), bodyElement = angular.element(document).find('body');
-              templateElement.addClass(_this.type);
-              templateElement.addClass(_this.position);
-              bodyElement.append(templateElement);
-            }).error(function (data) {
-              throw new Error('Template specified for llNotifier (' + notification.template + ') could not be loaded. ' + data);
-            });
+          scope.type = notification.type;
+          scope.position = notification.position;
+          scope.hasTimeout = notification.hasTimeout;
+          scope.timeout = notification.timeout;
+          scope.closeNotification = function () {
+            scope.isShown = false;
           };
-          return notification;
+          if (notification.hasTimeout) {
+            $timeout(function () {
+              scope.isShown = false;
+            }, notification.timeout);
+          }
+          return scope;
         }
       };
+    }
+  ]).factory('Notification', [
+    '$compile',
+    'llConstants',
+    'NotificationDecorator',
+    'llNotificationScopeFactory',
+    function ($compile, llConstants, NotificationDecorator, llNotificationScopeFactory) {
+      function Notification(args) {
+        var notification = new NotificationDecorator(args).toObject();
+        this.template = notification.template ? notification.template : '';
+        this.type = notification.type ? notification.type : llConstants.DEFAULT_NOTIFICATION_TYPE;
+        this.position = notification.position ? notification.position : llConstants.DEFAULT_NOTIFICATION_POSITION;
+        this.hasTimeout = angular.isUndefined(notification.hasTimeout) ? true : notification.hasTimeout === true;
+        this.timeout = angular.isDefined(notification.timeout) ? notification.timeout : llConstants.DEFAULT_TIMEOUT;
+        this.scope = llNotificationScopeFactory.newConfiguredScope(this, angular.isDefined(notification.scope) ? notification.scope : {});
+      }
+      Notification.prototype = {
+        render: function () {
+          var template = '<ll-notification type="type" position="position" has-timeout="hasTimeout" timeout="timeout">' + this.template + '</ll-notification>', templateElement = $compile(template)(this.scope), bodyElement = angular.element(document).find('body');
+          bodyElement.append(templateElement);
+        }
+      };
+      return Notification;
     }
   ]);
 }());
 (function () {
   'use strict';
   angular.module('llNotifier').service('notifier', [
-    'notifierFactory',
-    function (notifierFactory) {
-      var doNotify = function doNotify(args, notificationType) {
-        var notification = notifierFactory.newNotification(args);
-        if (angular.isDefined(notificationType)) {
-          notification.type = notificationType;
-        }
-        notification.render();
-      };
+    'Notification',
+    function (Notification) {
       this.notify = function notify(args) {
-        doNotify(args);
+        new Notification(args).render();
       };
-      this.success = function success(args) {
-        doNotify(args, 'success');
-      };
-      this.warning = function warning(args) {
-        doNotify(args, 'warning');
-      };
-      this.info = function info(args) {
-        doNotify(args, 'info');
-      };
-      this.error = function error(args) {
-        doNotify(args, 'error');
+    }
+  ]);
+}());
+(function () {
+  'use strict';
+  angular.module('llNotifier').directive('llNotification', [
+    'llNotifierTemplateUrl',
+    function (llNotifierTemplateUrl) {
+      return {
+        scope: true,
+        restrict: 'E',
+        templateUrl: llNotifierTemplateUrl,
+        transclude: true
       };
     }
   ]);
@@ -113,6 +109,6 @@ angular.module('llNotifier').run([
   '$templateCache',
   function ($templateCache) {
     'use strict';
-    $templateCache.put('src/angular-notifier.html', '<span class="notifier-msg" ng-cloak ng-click="closeMsg()" ng-show="isShown">\r' + '\n' + '\t{{ message }}\r' + '\n' + '</span>');
+    $templateCache.put('src/angular-notifier.html', '<span class="notifier-msg {{type}} {{position}}" ng-click="closeNotification()" ng-show="isShown" ng-cloak ng-transclude>\r' + '\n' + '</span>');
   }
 ]);

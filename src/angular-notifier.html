@@ -1,3 +1,2 @@
-<span class="notifier-msg" ng-cloak ng-click="closeMsg()" ng-show="isShown">
-	{{ message }}
+<span class="notifier-msg {{type}} {{position}}" ng-click="closeNotification()" ng-show="isShown" ng-cloak ng-transclude>
 </span>
