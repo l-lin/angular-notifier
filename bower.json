@@ -1,6 +1,6 @@
 {
   "name": "angular-notifier",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "l.lin",
   "main": [
     "dist/angular-notifier.js",
