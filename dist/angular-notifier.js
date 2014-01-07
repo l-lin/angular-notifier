@@ -1,5 +1,5 @@
 /*!
- * angular-notifier - v0.0.1
+ * angular-notifier - v0.0.2
  * https://github.com/l-lin/angular-notifier
  */
 (function () {
