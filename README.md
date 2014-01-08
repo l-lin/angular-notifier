@@ -2,6 +2,8 @@ Angular Notifier [![Build Status](https://travis-ci.org/l-lin/angular-notifier.p
 ================
 > AngularJS simple notifications service
 
+Work still in progress!
+
 Live demo
 ================
 See [demo](http://l-lin.github.io/angular-notifier/)
@@ -51,18 +53,6 @@ app.controller('demoCtrl', function($scope, notifier) {
     $scope.notify = function() {
         notifier.notify($scope.demoText);
     };
-    $scope.success = function() {
-        notifier.success($scope.demoText);
-    };
-    $scope.warning = function() {
-        notifier.warning($scope.demoText);
-    };
-    $scope.info = function() {
-        notifier.info($scope.demoText);
-    };
-    $scope.error = function() {
-        notifier.error($scope.demoText);
-    };
 });
 ```
 Custom notifications
@@ -71,7 +61,7 @@ Inject the notifier service and notify by supplying with a config Object as a pa
 ```
 app.controller('demoCtrl', function($scope, notifier) {
     $scope.demoNotification = {
-        message: 'Custom notification',
+        template: 'Custom notification',
         hasDelay: true,
         delay: 3000,
         type: 'info',
