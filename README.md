@@ -72,8 +72,8 @@ Inject the notifier service and notify by supplying with a config Object as a pa
 app.controller('demoCtrl', function($scope, notifier) {
     $scope.demoNotification = {
         message: 'Custom notification',
-        hasTimeout: true,
-        timeout: 3000,
+        hasDelay: true,
+        delay: 3000,
         type: 'info',
         position: 'top center'
     };

@@ -63,7 +63,7 @@ module.exports = function(grunt) {
                     module: 'llNotifier',
                     base: '<%= yeoman.src %>'
                 },
-                src: '<%= yeoman.src %>/angular-notifier.html',
+                src: '<%= yeoman.src %>/*.html',
                 dest: '<%= yeoman.build %>/angular-notifier.template.js'
             }
         },
@@ -163,8 +163,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', [
         'format',
-        'jshint',
-        'test',
+        // 'jshint',
+        // 'test',
         'build'
     ]);
 };
