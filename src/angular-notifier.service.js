@@ -32,6 +32,7 @@
                 bodyElement = angular.element(document).find('body');
             bodyElement.append(templateElement);
         }
+
         /**
          * Notify the given argument
          * @param  {JSONObject|String} args the argument to notify
@@ -40,7 +41,7 @@
             var _this = this,
                 notification = new Notification(args);
             _this.scope.notifications.push(notification);
-            // Only applied for the first notification
+            // Only apply for the first notification
             if (_this.isFirstNotification) {
                 fetchTemplateContent(function(template) {
                     appendTemplateToBody(template, _this.scope);

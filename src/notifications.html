@@ -1,3 +1,3 @@
-<ll-notification ng-repeat="notification in notifications" type="notification.type" position="notification.position" has-timeout="notification.hasTimeout" timeout="notification.timeout">
-	{{notification.template}}
+<ll-notification ng-repeat="notification in notifications" type="notification.type" position="notification.position" has-delay="notification.hasDelay" delay="notification.delay">
+	<ll-notification-content></ll-notification-content>
 </ll-notification>

@@ -96,6 +96,33 @@
     'llNotificationTemplateUrl',
     'llConstants',
     function ($timeout, llNotificationTemplateUrl, llConstants) {
+      return {
+        scope: true,
+        restrict: 'E',
+        templateUrl: llNotificationTemplateUrl,
+        transclude: true,
+        link: function (scope) {
+          var notification = scope.notification;
+          notification.isShown = true;
+          var removeNotification = function removeNotification() {
+            scope.notification.isShown = false;
+            $timeout(function () {
+              var notifications = scope.$parent.notifications;
+              for (var i = notifications.length - 1; i >= 0; i--) {
+                if (!notifications[i].isShown) {
+                  scope.$parent.notifications.splice(i, 1);
+                }
+              }
+            }, llConstants.FADE_DELAY);
+          };
+          scope.closeNotification = removeNotification;
+          notification.timeout(removeNotification);
+        }
+      };
+    }
+  ]).directive('llNotificationContent', [
+    '$compile',
+    function ($compile) {
       function ScopeDecorator(scope) {
         this.scope = scope;
       }
@@ -110,23 +137,21 @@
           return this.scope;
         }
       };
+      function TemplateDecorator(template) {
+        this.template = template;
+      }
+      TemplateDecorator.prototype = {
+        toTemplate: function () {
+          return '<span>' + this.template + '</span>';
+        }
+      };
       return {
         scope: true,
         restrict: 'E',
-        templateUrl: llNotificationTemplateUrl,
         transclude: true,
-        link: function (scope) {
-          var notification = scope.notification;
-          notification.isShown = true;
+        link: function (scope, element) {
           scope = new ScopeDecorator(scope).populateWith(scope.notification);
-          var removeNotification = function removeNotification() {
-            scope.notification.isShown = false;
-            $timeout(function () {
-              scope.$parent.notifications.splice(scope.$index, 1);
-            }, llConstants.FADE_DELAY);
-          };
-          scope.closeNotification = removeNotification;
-          notification.timeout(removeNotification);
+          element.replaceWith($compile(new TemplateDecorator(scope.notification.template).toTemplate())(scope));
         }
       };
     }
@@ -136,7 +161,7 @@ angular.module('llNotifier').run([
   '$templateCache',
   function ($templateCache) {
     'use strict';
-    $templateCache.put('src/notification.html', '<span class="notifier-msg {{notification.type}} {{notification.position}}" ng-click="closeNotification()" ng-show="notification.isShown" ng-cloak ng-transclude>\r' + '\n' + '</span>');
-    $templateCache.put('src/notifications.html', '<ll-notification ng-repeat="notification in notifications" type="notification.type" position="notification.position" has-timeout="notification.hasTimeout" timeout="notification.timeout">\r' + '\n' + '\t{{notification.template}}\r' + '\n' + '</ll-notification>');
+    $templateCache.put('src/notification.html', '<span class="notifier-msg {{notification.type}} {{notification.position}}" ng-click="closeNotification()" ng-show="notification.isShown" ng-cloak ng-transclude>\r' + '\n' + '</span>\r' + '\n');
+    $templateCache.put('src/notifications.html', '<ll-notification ng-repeat="notification in notifications" type="notification.type" position="notification.position" has-delay="notification.hasDelay" delay="notification.delay">\r' + '\n' + '\t<ll-notification-content></ll-notification-content>\r' + '\n' + '</ll-notification>\r' + '\n');
   }
 ]);
