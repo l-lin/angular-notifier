@@ -44,7 +44,7 @@ Usage
 ================
 Simple usage
 ----------------
-Inject the notifier service and notify by supplying with a String as a parameter like this:
+Inject the `notifier` service and notify by supplying with a `String` as a parameter like this:
 
 ```
 app.controller('demoCtrl', function($scope, notifier) {
@@ -56,7 +56,7 @@ app.controller('demoCtrl', function($scope, notifier) {
 ```
 Custom notifications
 ----------------
-Inject the notifier service and notify by supplying with a config Object as a parameter like this:
+Inject the `notifier` service and notify by supplying with a `config Object` as a parameter like this:
 ```
 app.controller('demoCtrl', function($scope, notifier) {
     $scope.demoNotification = {
@@ -68,6 +68,26 @@ app.controller('demoCtrl', function($scope, notifier) {
     };
     $scope.customNotify = function() {
         notifier.notify($scope.demoNotification);
+    };
+});
+```
+
+Defining your own scope
+----------------
+You can put your own `scope` in the `config object` like this:
+```
+app.controller('demoCtrl', function($scope, notifier) {
+    var notification = {
+        template: '<h3 ng-click="openNestedNotification()">Click me!</h3>',
+        scope: {
+            openNestedNotification: function() {
+                notifier.notify({template: 'I am a nested notification!', type: 'success'});
+            }
+        },
+        hasDelay: false
+    };
+    $scope.nestedNotification = function() {
+        notifier.notify(notification);
     };
 });
 ```
