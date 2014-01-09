@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="styles/font-awesome.min.css">
 	<link rel="stylesheet" href="styles/main.css">
 	<link rel="stylesheet" href="styles/monokai.syntax.css">
-	<link rel="stylesheet" href="vendor/angular-notifier/angular-notifier.min.css">
+	<link rel="stylesheet" href="vendor/angular-notifier/angular-notifier.css">
 </head>
 <body ng-app="notifierDemoApp">
 	<!--[if lt IE 7]>
@@ -131,8 +131,8 @@
 <pre><code class="javascript"><span class="nx">app</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'demoCtrl'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">notifier</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">$scope</span><span class="p">.</span><span class="nx">demoNotification</span> <span class="o">=</span> <span class="p">{</span>
         <span class="nx">template</span><span class="o">:</span> <span class="s1">'{{demoNotification.template}}'</span><span class="p">,</span>
-        <span class="nx">hasTimeout</span><span class="o">:</span> <span class="kc">{{demoNotification.hasTimeout}}</span><span class="p">,</span>
-        <span class="nx">timeout</span><span class="o">:</span> <span class="mi">{{demoNotification.timeout}}</span><span class="p">,</span>
+        <span class="nx">hasDelay</span><span class="o">:</span> <span class="kc">{{demoNotification.hasDelay}}</span><span class="p">,</span>
+        <span class="nx">delay</span><span class="o">:</span> <span class="mi">{{demoNotification.delay}}</span><span class="p">,</span>
         <span class="nx">type</span><span class="o">:</span> <span class="s1">'{{demoNotification.type}}'</span><span class="p">,</span>
         <span class="nx">position</span><span class="o">:</span> <span class="s1">'{{demoNotification.position}}'</span>
     <span class="p">};</span>
@@ -149,12 +149,12 @@
 						<input name="template" id="template" type="text" ng-model="demoNotification.template" placeholder="Template" />
 					</p>
 					<p>
-						<label for="hasTimeout">Add timer: </label>
-						<input name="hasTimeout" id="hasTimeout" type="checkbox" ng-model="demoNotification.hasTimeout" />
+						<label for="hasDelay">Add timer: </label>
+						<input name="hasDelay" id="hasDelay" type="checkbox" ng-model="demoNotification.hasDelay" />
 					</p>
-					<p ng-show="demoNotification.hasTimeout">
-						<label for="timeout">&nbsp;</label>
-						<input name="timeout" id="timeout" type="text" ng-model="demoNotification.timeout" placeholder="timer" /> ms
+					<p ng-show="demoNotification.hasDelay">
+						<label for="delay">&nbsp;</label>
+						<input name="delay" id="delay" type="text" ng-model="demoNotification.delay" placeholder="timer" /> ms
 					</p>
 					<p>
 						<label for="type">Notification type: </label>
@@ -192,7 +192,7 @@
                 <span class="nx">notifier</span><span class="p">.</span><span class="nx">notify</span><span class="p">({</span><span class="nx">template</span><span class="o">:</span> <span class="s1">'I am a nested notification!'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">'success'</span><span class="p">});</span>
             <span class="p">}</span>
         <span class="p">},</span>
-        <span class="nx">hasTimeout</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="nx">hasDelay</span><span class="o">:</span> <span class="kc">false</span>
     <span class="p">};</span>
     <span class="nx">$scope</span><span class="p">.</span><span class="nx">nestedNotification</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
         <span class="nx">notifier</span><span class="p">.</span><span class="nx">notify</span><span class="p">(</span><span class="nx">notification</span><span class="p">);</span>
@@ -214,7 +214,7 @@
 
 	<script src="vendor/angular/angular.min.js"></script>
 	<script src="vendor/angular-animate/angular-animate.min.js"></script>
-	<script src="vendor/angular-notifier/angular-notifier.min.js"></script>
+	<script src="vendor/angular-notifier/angular-notifier.js"></script>
 	<script src="app/app.js"></script>
 </body>
 </html>

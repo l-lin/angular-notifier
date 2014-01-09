@@ -10,8 +10,8 @@
 
 		$scope.demoNotification = {
 			template: 'Custom notification',
-			hasTimeout: true,
-			timeout: 3000,
+			hasDelay: true,
+			delay: 3000,
 			type: 'info',
 			position: 'top center'
 		};
@@ -26,7 +26,7 @@
 					notifier.notify({template: 'I am a nested notification!', type: 'success'});
 				}
 			},
-			hasTimeout: false
+			hasDelay: false
 		};
 		$scope.nestedNotification = function() {
 			notifier.notify(notification);
