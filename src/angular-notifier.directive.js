@@ -47,12 +47,11 @@
              * Populate with the notification attributes
              * @return {scope} the scope of the notification
              */
-            populateWith: function() {
-                var notification = this.scope.notification;
+            populateWith: function(scopeToAdd) {
                 // notification.scope === scope defined in the config object
-                if (typeof notification.scope === 'object') {
-                    for (var key in notification.scope) {
-                        this.scope[key] = notification.scope[key];
+                if (typeof scopeToAdd === 'object') {
+                    for (var key in scopeToAdd) {
+                        this.scope[key] = scopeToAdd[key];
                     }
                 }
                 return this.scope;
