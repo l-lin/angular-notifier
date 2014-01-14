@@ -3,19 +3,12 @@
  * https://github.com/l-lin/angular-notifier
  */
 .notifier-msg {
-    font-size: 16px;
-    font-family: 'Gilda Display', serif;
     position: fixed;
     z-index: 1000;
-    padding: 10px;
-    -webkit-user-select: none;
-    cursor: pointer;
-    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
-    border-radius: 5px;
 }
 
 .notifier-msg.top {
-    top: 0;
+    top: 5%;
 }
 
 .notifier-msg.right {
@@ -23,7 +16,7 @@
 }
 
 .notifier-msg.bottom {
-    bottom: 0;
+    bottom: 5%;
 }
 
 .notifier-msg.left {
@@ -34,37 +27,54 @@
     left: 50%;
 }
 
-.notifier-msg.default {
+.notifier-msg-content {
+    font-size: 16px;
+    font-family: 'Gilda Display', serif;
+    padding: 10px;
+    -webkit-user-select: none;
+    cursor: pointer;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+}
+
+.notifier-msg-content.center {
+    position: relative;
+    left: -50%;
+}
+
+.notifier-msg-content.default {
     color: #FFF;
     background-color: #5E635E;
     background-image: linear-gradient(#DADADA, #5E635E 6%, #151815);
 }
 
-.notifier-msg.success {
+.notifier-msg-content.success {
     color: #FFF;
     background-color: #62E756;
     background-image: linear-gradient(#6ADD78, #62E756 6%, #09B40F);
 }
 
-.notifier-msg.warning {
+.notifier-msg-content.warning {
     color: #86652C;
     background-color: #E9B30A;
     background-image: linear-gradient(#FDF4C4, #F3E181 6%, #E9B30A);
 }
 
-.notifier-msg.info {
+.notifier-msg-content.info {
     color: #FFF;
     background-color: #5C56E7;
     background-image: linear-gradient(#6A7CDD, #5662E7 6%, #091EB4);
 }
 
-.notifier-msg.error {
+.notifier-msg-content.error {
     color: #FFF;
     background-color: #E75656;
     background-image: linear-gradient(#DD6A6A, #E75656 6%, #B40909);
 }
+
 /* TRANSITION */
-.notifier-msg.ng-hide-add, .notifier-msg.ng-hide-remove {
+.notifier-msg.ng-hide-add, 
+.notifier-msg.ng-hide-remove {
     -webkit-transition:all linear 0.5s;
     -moz-transition:all linear 0.5s;
     -o-transition:all linear 0.5s;
