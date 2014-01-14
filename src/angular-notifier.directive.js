@@ -30,6 +30,7 @@
 
                 scope.closeNotification = removeNotification;
                 notification.timeout(removeNotification);
+                notification.isCentered = notification.position.indexOf('center') !== -1;
             }
         };
     }).

@@ -158,7 +158,7 @@ module.exports = function(grunt) {
         'cssmin',
         'uglify',
         'concat:banner',
-        'concat:bannerCSS',
+        'concat:bannerCSS'
     ]);
 
     grunt.registerTask('default', [

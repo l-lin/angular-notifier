@@ -224,3 +224,8 @@ section:after {
     border-color: #B40404;
     background-image: linear-gradient(#FF6464, #FF0000 6%, #B60E0E);
 }
+
+.foo {
+    position: relative;
+    left: -50%;
+}

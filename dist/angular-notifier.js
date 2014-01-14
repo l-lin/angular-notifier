@@ -117,6 +117,7 @@
           };
           scope.closeNotification = removeNotification;
           notification.timeout(removeNotification);
+          notification.isCentered = notification.position.indexOf('center') !== -1;
         }
       };
     }
@@ -127,11 +128,10 @@
         this.scope = scope;
       }
       ScopeDecorator.prototype = {
-        populateWith: function () {
-          var notification = this.scope.notification;
-          if (typeof notification.scope === 'object') {
-            for (var key in notification.scope) {
-              this.scope[key] = notification.scope[key];
+        populateWith: function (scopeToAdd) {
+          if (typeof scopeToAdd === 'object') {
+            for (var key in scopeToAdd) {
+              this.scope[key] = scopeToAdd[key];
             }
           }
           return this.scope;
@@ -161,7 +161,7 @@ angular.module('llNotifier').run([
   '$templateCache',
   function ($templateCache) {
     'use strict';
-    $templateCache.put('src/notification.html', '<span class="notifier-msg {{notification.type}} {{notification.position}}" ng-click="closeNotification()" ng-show="notification.isShown" ng-cloak ng-transclude>\r' + '\n' + '</span>\r' + '\n');
+    $templateCache.put('src/notification.html', '<span class="notifier-msg {{notification.position}}" ng-click="closeNotification()" ng-show="notification.isShown" ng-cloak>\r' + '\n' + '\t<span class="notifier-msg-content {{notification.type}}" ng-class="{center: notification.isCentered}" ng-transclude></span>\r' + '\n' + '</span>\r' + '\n');
     $templateCache.put('src/notifications.html', '<ll-notification ng-repeat="notification in notifications" type="notification.type" position="notification.position" has-delay="notification.hasDelay" delay="notification.delay">\r' + '\n' + '\t<ll-notification-content></ll-notification-content>\r' + '\n' + '</ll-notification>\r' + '\n');
   }
 ]);
