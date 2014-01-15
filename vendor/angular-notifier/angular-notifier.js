@@ -142,7 +142,7 @@
       }
       TemplateDecorator.prototype = {
         toTemplate: function () {
-          return '<span>' + this.template + '</span>';
+          return '<div>' + this.template + '</div>';
         }
       };
       return {
@@ -150,7 +150,7 @@
         restrict: 'E',
         transclude: true,
         link: function (scope, element) {
-          scope = new ScopeDecorator(scope).populateWith(scope.notification);
+          scope = new ScopeDecorator(scope).populateWith(scope.notification.scope);
           element.replaceWith($compile(new TemplateDecorator(scope.notification.template).toTemplate())(scope));
         }
       };
@@ -161,7 +161,7 @@ angular.module('llNotifier').run([
   '$templateCache',
   function ($templateCache) {
     'use strict';
-    $templateCache.put('src/notification.html', '<span class="notifier-msg {{notification.position}}" ng-click="closeNotification()" ng-show="notification.isShown" ng-cloak>\r' + '\n' + '\t<span class="notifier-msg-content {{notification.type}}" ng-class="{center: notification.isCentered}" ng-transclude></span>\r' + '\n' + '</span>\r' + '\n');
+    $templateCache.put('src/notification.html', '<div class="notifier-msg {{notification.position}}" ng-click="closeNotification()" ng-show="notification.isShown" ng-cloak>\r' + '\n' + '\t<div class="notifier-msg-content {{notification.type}}" ng-class="{center: notification.isCentered}" ng-transclude></div>\r' + '\n' + '</div>\r' + '\n');
     $templateCache.put('src/notifications.html', '<ll-notification ng-repeat="notification in notifications" type="notification.type" position="notification.position" has-delay="notification.hasDelay" delay="notification.delay">\r' + '\n' + '\t<ll-notification-content></ll-notification-content>\r' + '\n' + '</ll-notification>\r' + '\n');
   }
 ]);
