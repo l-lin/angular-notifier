@@ -72,7 +72,7 @@
              * @return {String} the wrapped tempalte
              */
             toTemplate: function() {
-                return '<span>' + this.template + '</span>';
+                return '<div>' + this.template + '</div>';
             }
         };
 
@@ -81,7 +81,7 @@
             restrict: 'E',
             transclude: true,
             link: function(scope, element) {
-                scope = new ScopeDecorator(scope).populateWith(scope.notification);
+                scope = new ScopeDecorator(scope).populateWith(scope.notification.scope);
                 element.replaceWith($compile(new TemplateDecorator(scope.notification.template).toTemplate())(scope));
             }
         };
