@@ -1,3 +1,6 @@
-<div class="notifier-msg {{notification.position}}" ng-click="closeNotification()" ng-show="notification.isShown" ng-cloak>
-	<div class="notifier-msg-content {{notification.type}}" ng-class="{center: notification.isCentered}" ng-transclude></div>
+<div class="notifier-msg {{notification.position}}" ng-show="notification.isShown" ng-cloak>
+	<div class="notifier-msg-content {{notification.type}}" ng-class="{center: notification.isCentered}">
+		<div ng-transclude></div>
+		<button class="notifier-button notifier-button-close" ng-click="closeNotification()">x</button>
+	</div>
 </div>

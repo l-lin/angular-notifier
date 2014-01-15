@@ -225,7 +225,10 @@ section:after {
     background-image: linear-gradient(#FF6464, #FF0000 6%, #B60E0E);
 }
 
-.foo {
-    position: relative;
-    left: -50%;
+/* ---------------------------------------- */
+/* NOTIFICATIONS */
+/* ---------------------------------------- */
+
+.notifier-msg-content h3 {
+    cursor: pointer;
 }
