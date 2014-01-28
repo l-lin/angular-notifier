@@ -23,7 +23,7 @@
 			template: '<h3 ng-click="openNestedNotification()">Click me!</h3>',
 			scope: {
 				openNestedNotification: function() {
-					notifier.notify({template: 'I am a nested notification!', type: 'success'});
+					notifier.notify({template: 'I am a nested notification!', type: 'success', position: 'top right'});
 				}
 			},
 			hasDelay: false
