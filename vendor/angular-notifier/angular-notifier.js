@@ -1,5 +1,5 @@
 /*!
- * angular-notifier - v0.0.2
+ * angular-notifier - v0.0.3
  * https://github.com/l-lin/angular-notifier
  */
 (function () {
@@ -161,7 +161,7 @@ angular.module('llNotifier').run([
   '$templateCache',
   function ($templateCache) {
     'use strict';
-    $templateCache.put('src/notification.html', '<div class="notifier-msg {{notification.position}}" ng-show="notification.isShown" ng-cloak>\r' + '\n' + '\t<div class="notifier-msg-content {{notification.type}}" ng-class="{center: notification.isCentered}">\r' + '\n' + '\t\t<div ng-transclude></div>\r' + '\n' + '\t\t<button class="notifier-button notifier-button-close" ng-click="closeNotification()">x</button>\r' + '\n' + '\t</div>\r' + '\n' + '</div>\r' + '\n');
-    $templateCache.put('src/notifications.html', '<ll-notification ng-repeat="notification in notifications" type="notification.type" position="notification.position" has-delay="notification.hasDelay" delay="notification.delay">\r' + '\n' + '\t<ll-notification-content></ll-notification-content>\r' + '\n' + '</ll-notification>\r' + '\n');
+    $templateCache.put('src/notification.html', '<div class="notifier-msg {{notification.position}}" ng-show="notification.isShown" ng-cloak>\n' + '\t<div class="notifier-msg-content {{notification.type}}" ng-class="{center: notification.isCentered}">\n' + '\t\t<div ng-transclude></div>\n' + '\t\t<button class="notifier-button notifier-button-close" ng-click="closeNotification()">x</button>\n' + '\t</div>\n' + '</div>\n');
+    $templateCache.put('src/notifications.html', '<ll-notification ng-repeat="notification in notifications" type="notification.type" position="notification.position" has-delay="notification.hasDelay" delay="notification.delay">\n' + '\t<ll-notification-content></ll-notification-content>\n' + '</ll-notification>\n');
   }
 ]);
