@@ -189,7 +189,11 @@
         <span class="nx">template</span><span class="o">:</span> <span class="s1">'&lt;h3 ng-click="openNestedNotification()"&gt;Click me!&lt;/h3&gt;'</span><span class="p">,</span>
         <span class="nx">scope</span><span class="o">:</span> <span class="p">{</span>
             <span class="nx">openNestedNotification</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-                <span class="nx">notifier</span><span class="p">.</span><span class="nx">notify</span><span class="p">({</span><span class="nx">template</span><span class="o">:</span> <span class="s1">'I am a nested notification!'</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">'success'</span><span class="p">});</span>
+                <span class="nx">notifier</span><span class="p">.</span><span class="nx">notify</span><span class="p">({</span>
+                <span class="nx">template</span><span class="o">:</span> <span class="s1">'Nested notification!'</span><span class="p">,</span>
+                <span class="nx">type</span><span class="o">:</span> <span class="s1">'success'</span><span class="p">,</span>
+                <span class="nx">position</span><span class="o">:</span> <span class="s1">'top right'</span>
+            <span class="p">});</span>
             <span class="p">}</span>
         <span class="p">},</span>
         <span class="nx">hasDelay</span><span class="o">:</span> <span class="kc">false</span>
