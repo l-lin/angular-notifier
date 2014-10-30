@@ -48,6 +48,7 @@
                     _this.isFirstNotification = false;
                 });
             }
+            return notification;
         };
     });
 })();
