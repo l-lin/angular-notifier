@@ -137,7 +137,6 @@
     }
   ]);
 }());
-console.log('we have a new notifier');
 (function () {
   'use strict';
   angular.module('llNotifier').directive('llNotification', [
