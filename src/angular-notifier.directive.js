@@ -29,6 +29,7 @@
                 };
 
                 scope.closeNotification = removeNotification;
+                scope.notification.close = removeNotification;
                 notification.timeout(removeNotification);
                 notification.isCentered = notification.position.indexOf('center') !== -1;
             }
